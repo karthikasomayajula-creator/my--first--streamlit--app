@@ -6,11 +6,13 @@ st.write("Hello, this is my first Streamlit deployment!")
 name = st.text_input("Enter your name:")
 if name:
     st.success(f"Welcome, {name}!")
-    from openai import OpenAI
+    from openai import openAI
+import streamlit as st
+with st.sidebar:
+    api_key = st.text_input("API Key", key="chatbot_api_key", type="password")
 
 with st.sidebar:
-    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type="password")
-   
+    openai_api_key = st.text_input("OpenAI API Key", key="chatbot_api_key", type=")
 
 st.title("💬 Chatbot")
 st.caption("🚀 A Streamlit chatbot powered by OpenAI")
@@ -21,11 +23,11 @@ for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
 if prompt := st.chat_input():
-    if not openai_api_key:
+    if not api_key:
         st.info("Please add your OpenAI API key to continue.")
         st.stop()
 
-    client = OpenAI(api_key=openai_api_key)
+    client = openAI(api_key=openai_api_key)
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
     response = client.chat.completions.create(model="gpt-3.5-turbo", messages=st.session_state.messages)
