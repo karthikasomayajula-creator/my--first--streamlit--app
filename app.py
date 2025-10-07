@@ -6,7 +6,7 @@ st.write("Hello, this is my first Streamlit deployment!")
 name = st.text_input("Enter your name:")
 if name:
     st.success(f"Welcome, {name}!")
-    from openai import openAI
+    from openAi import openAI
 import streamlit as st
 with st.sidebar:
     api_key = st.text_input("API Key", key="chatbot_api_key", type="password")
