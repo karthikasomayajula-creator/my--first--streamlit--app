@@ -1,6 +1,6 @@
 import streamlit as st
 
-    from openAI import openAI
+from openAI import openAI
 import streamlit as st
 with st.sidebar:
    openAI_api_key = st.text_input("API Key", key="chatbot_api_key", type="password")
